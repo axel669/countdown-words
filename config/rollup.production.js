@@ -5,6 +5,7 @@ import {terser} from "rollup-plugin-terser"
 import html from "@rollup/plugin-html"
 
 import copy from "./plugins/copy.js"
+import simpleLocation from "./plugins/simple-location.js"
 
 import appInfo from "./app-info.js"
 import template from "./html-template.js"
@@ -17,6 +18,7 @@ export default {
     },
     plugins: [
         svelte(),
+        simpleLocation,
         resolve(),
         commonjs(),
         terser(),
