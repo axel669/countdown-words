@@ -10,6 +10,8 @@
     export let valid
     export let userWord
 
+    const baseURL = "https://www.merriam-webster.com/dictionary/"
+
     $: color = valid ? "secondary" : "danger"
 </script>
 
@@ -24,6 +26,13 @@
         align-items: center;
         justify-content: center;
         padding: 4px;
+    }
+    possible-word.user > a {
+        color: var(--secondary);
+    }
+
+    a, a:hover, a:visited {
+        color: white;
     }
 </style>
 
@@ -47,7 +56,11 @@
 
         <Grid cols={3}>
             {#each answers as answer}
-                <possible-word>{answer}</possible-word>
+                <possible-word class:user={answer === userWord}>
+                    <a href="{baseURL}{answer}" target="_blank">
+                        {answer}
+                    </a>
+                </possible-word>
             {/each}
         </Grid>
     </Card>
